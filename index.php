@@ -149,12 +149,12 @@ preserveAspectRatio="xMidYMid meet">
   }
   
   ?></button>
-<!-- <div>
+<div>
 
 <ul id="company-results"></ul>
   <img id="movie-image" />
 
-</div> -->
+</div>
   <div class="wrapper">
 
   </div>

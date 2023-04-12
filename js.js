@@ -1,52 +1,3 @@
-const Http = new XMLHttpRequest();
-const ul = document.getElementById('company-results');
-
-const movieId = 776835; // ID de ejemplo para la película "No Time to Die"
-const apiKey = '5cca8eb88c838ba5c62f06b7b6a8a2b2';
-
-const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
-const url1 = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${apiKey}&language=en-US`;
-
-Http.open('GET', url);
-Http.send();
-
-Http.onreadystatechange = (e) => {
-  if (Http.readyState === 4 && Http.status === 200) {
-    const response = JSON.parse(Http.responseText);
-    const title = response.title;
-    const releaseDate = response.release_date;
-    const overview = response.overview;
-
-    const liTitle = document.createElement('li');
-    liTitle.textContent = `Title: ${title}`;
-    ul.appendChild(liTitle);
-
-    const liReleaseDate = document.createElement('li');
-    liReleaseDate.textContent = `Release date: ${releaseDate}`;
-    ul.appendChild(liReleaseDate);
-
-    const liOverview = document.createElement('li');
-    liOverview.textContent = `Overview: ${overview}`;
-    ul.appendChild(liOverview);
-
-    Http.open('GET', url1);
-    Http.send();
-
-    Http.onreadystatechange = (e) => {
-      if (Http.readyState === 4 && Http.status === 200) {
-        const response = JSON.parse(Http.responseText);
-        const images = response.backdrops;
-        if (images.length > 0) {
-          const imageUrl = 'https://image.tmdb.org/t/p/w500' + images[0].file_path;
-          const img = document.getElementById('movie-image');
-          img.src = imageUrl;
-        }
-      }
-    };
-  }
-};
-
-
 // window.onload = function() {
 //     setTimeout(removeLoader, 1500); // tiempo en milisegundos
 //   };
@@ -188,3 +139,50 @@ Http.onreadystatechange = (e) => {
 //         }
 //     }
 // };
+const Http = new XMLHttpRequest();
+const ul = document.getElementById('company-results');
+
+const movieId = 776835; // ID de ejemplo para la película "No Time to Die"
+const apiKey = '5cca8eb88c838ba5c62f06b7b6a8a2b2';
+
+const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
+const url1 = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${apiKey}&language=en-US`;
+
+Http.open('GET', url);
+Http.send();
+
+Http.onreadystatechange = (e) => {
+  if (Http.readyState === 4 && Http.status === 200) {
+    const response = JSON.parse(Http.responseText);
+    const title = response.title;
+    const releaseDate = response.release_date;
+    const overview = response.overview;
+
+    const liTitle = document.createElement('li');
+    liTitle.textContent = `Title: ${title}`;
+    ul.appendChild(liTitle);
+
+    const liReleaseDate = document.createElement('li');
+    liReleaseDate.textContent = `Release date: ${releaseDate}`;
+    ul.appendChild(liReleaseDate);
+
+    const liOverview = document.createElement('li');
+    liOverview.textContent = `Overview: ${overview}`;
+    ul.appendChild(liOverview);
+
+    Http.open('GET', url1);
+    Http.send();
+
+    Http.onreadystatechange = (e) => {
+      if (Http.readyState === 4 && Http.status === 200) {
+        const response = JSON.parse(Http.responseText);
+        const images = response.backdrops;
+        if (images.length > 0) {
+          const imageUrl = 'https://image.tmdb.org/t/p/w500' + images[0].file_path;
+          const img = document.getElementById('movie-image');
+          img.src = imageUrl;
+        }
+      }
+    };
+  }
+};

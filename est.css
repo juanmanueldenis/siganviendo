@@ -17,7 +17,7 @@ html{
 	align-items: center;
 	
   }
-
+  
   .loader-text {
 	font-size: 1.5em;
 	color: #fff;
@@ -47,12 +47,6 @@ body div{
 	
 	text-align: center;
 }
-
-
-#company-results{
-	display:none;
-}
-
 .nav__cont {
 	position: fixed;
 	width: 60px;
